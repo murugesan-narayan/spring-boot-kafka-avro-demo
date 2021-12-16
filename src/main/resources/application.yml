@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    security:
+      protocol: "SSL"
+    bootstrap-servers: localhost:9093
+    ssl:
+      trust-store-location: classpath:/client-certs/kafka.client.truststore.jks
+      trust-store-password: keypass1
+      key-store-location: classpath:/client-certs/kafka.client.keystore.jks
+      key-store-password: keypass1
+    producer:
+      key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema.registry.url: http://localhost:8081
+    consumer:
+      key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      group-id: Group-Avro-1
+      properties:
+        schema.registry.url: http://localhost:8081
+        auto.offset.reset: earliest
+        specific.avro.reader: true
+kafka:
+  topic: TestAvroTopic

@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "namespace": "com.muru.kafka.avro.demo.model",
+  "name": "OrderKey",
+  "version": "1",
+  "fields": [
+    { "name": "order_key", "type": "string", "doc": "key for the order message" }
+  ]
+}
